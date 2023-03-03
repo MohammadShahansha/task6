@@ -74,16 +74,37 @@ const showDetails = data =>{
     const modalCard = document.getElementById('modalCard');
     modalCard.innerHTML = '';
     modalCard.innerHTML += `
-    <div class="col">
-        <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-            additional content. This content is a little bit longer.</p>
-        </div>
+    <div>
+        <div class="col">
+            <div style="background: rgba(235, 87, 87, 0.05);" class="card">
+                <h4 class = "px-4 my-4">${data.description}</h4>
+            <div class="card-body">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                <div class="card text-success py-2 px-1">
+                    <h5 class ="text-center fs-6 m-0"> ${data.pricing[0].price}</h5>
+                    <h5 class ="text-center fs-6 m-0 "> ${data.pricing[0].plan}</h5> 
+                </div>
+                </div>
+                <div class="col">
+                <div class="card text-warning py-2 px-1">
+                    <h5 class ="text-center fs-6 m-0"> ${data.pricing[1].price}</h5>
+                    <h5 class ="text-center fs-6 m-0 "> ${data.pricing[1].plan}</h5>
+                </div>
+                </div>
+                <div class="col">
+                <div class="card text-danger-emphasis py-2 px-1">
+                    <h5 class ="text-center fs-6 m-0"> ${data.pricing[2].price.slice(0,10)}</h5>
+                    <h5 class ="text-center fs-6 m-0 "> ${data.pricing[2].plan}</h5>
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
         </div>
     </div>
+
+
     <div class="col">
         <div class="card">
         <img src="${data.image_link[0]}" class="card-img-top" alt="...">
@@ -93,7 +114,10 @@ const showDetails = data =>{
         </div>
         </div>
     </div>
-    `
+
+
+
+    `;
     
 }
 
