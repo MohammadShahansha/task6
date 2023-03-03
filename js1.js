@@ -73,6 +73,14 @@ function loadDetails(id){
 
 const showDetails = data =>{
     console.log(data);
+    console.log(data.pricing);
+    // condition for accuracy
+    const accuracy = document.getElementById('accuracyShow');
+    if(data.accuracy.score === 'null'){
+        accuracy.classList.add('d-none');
+    }
+    
+    
     const modalCard = document.getElementById('modalCard');
     modalCard.innerHTML = '';
     modalCard.innerHTML += `
@@ -84,23 +92,22 @@ const showDetails = data =>{
                  <div class="row row-cols-1 row-cols-md-3 g-4">
                         <div class="col">
                             <div class="card text-success py-2 px-1">
-                                <h5 class ="text-center fs-6 m-0"> ${data.pricing[0].price}</h5>
-                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing[0].plan}</h5> 
+                                <h5 class ="text-center fs-6 m-0"> ${data.pricing?data.pricing[0].price:'no price'}</h5>
+                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing?data.pricing[0].plan:'no basic'}</h5> 
                             </div>
                         </div>
                         <div class="col">
                             <div class="card text-warning py-2 px-1">
-                                <h5 class ="text-center fs-6 m-0"> ${data.pricing[1].price}</h5>
-                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing[1].plan}</h5>
+                                <h5 class ="text-center fs-6 m-0"> ${data.pricing?data.pricing[1].price:'no price'}</h5>
+                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing?data.pricing[1].plan:'no pro'}</h5>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card text-danger-emphasis py-2 px-1">
-                                <h5 class ="text-center fs-6 m-0"> ${data.pricing[2].price.slice(0,10)}</h5>
-                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing[2].plan}</h5>
+                                <h5 class ="text-center fs-6 m-0"> ${data.pricing?data.pricing[2].price.slice(0,10):'no contact'}</h5>
+                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing?data.pricing[2].plan:'nothing'}</h5>
                             </div>
-                        </div>
-                        
+                        </div>    
                  </div>
                  <div class="">
                     <div class=" ">
@@ -116,9 +123,9 @@ const showDetails = data =>{
                             <div>
                                 <h5 class="gap-0 m-0 p-0">Integration</h5>
                                 <ul class="p-3">
-                                    <li class="fs-6">${data.integrations[0]}</li>
-                                    <li class="fs-6">${data.integrations[1]}</li>
-                                    <li class="fs-6">${data.integrations[2]}</li>
+                                    <li class="fs-6">${data.integrations?data.integrations[0]:'no inti'}</li>
+                                    <li class="fs-6">${data.integrations?data.integrations[1]:'no inti'}</li>
+                                    <li class="fs-6">${data.integrations?data.integrations[2]:'no inti'}</li>
                                 </ul>
                             </div>
                         </div>    
@@ -132,11 +139,11 @@ const showDetails = data =>{
 
     <div class="col">
         <div class="card p-4">
-             <p class = "accuracy fs-6">Accuracy ${data.accuracy.score*100}%</p>
+             <p id="accuracyShow" class = "accuracy fs-6">${data.accuracy.score*100}% Accuracy</p>
             <img src="${data.image_link[0]}" class="card-img-top" alt="...">
             <div class="card-body px-4">
-                <h4 class="card-title text-center">${data.input_output_examples[0].input}</h4>
-                <p class="card-text text-center">${data.input_output_examples[0].output}</p>
+                <h4 class="card-title text-center">${data.input_output_examples?data.input_output_examples[0].input:'no input'}</h4>
+                <p class="card-text text-center">${data.input_output_examples?data.input_output_examples[0].output:'no output'}</p>
             </div>
         </div>
     </div>
@@ -150,5 +157,6 @@ const showDetails = data =>{
 function showSpinner(){
     document.getElementById('spinner').classList.remove('d-none');
 }
+
 
 loadFetch();
