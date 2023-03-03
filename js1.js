@@ -2,14 +2,23 @@ const loadFetch = () => {
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(url)
     .then(res => res.json())
-    .then(data => showFetch(data.data))
+    .then(data => showFetch(data.data.tools.slice(0,6)))
 }
 
 
-const showFetch = data => {
-    console.log(data.tools[0]);
+const showFetch = (data) => {
+    console.log(data);
+    // if(dataLimit===6){
+    //     document.getElementById('see-more').classList.remove('d-none');
+    //     data.slice(0,6);
+    // }
+    // else{
+    //     document.getElementById('see-more').classList.add('d-none');
+    // }
+
     const parantDiv = document.getElementById('parantDiv');
-    data.tools.forEach(singleItem => {
+    parantDiv.innerHTML='';
+    data.forEach(singleItem => {
         const childDiv = document.createElement('div');
         childDiv.classList.add('col');
         childDiv.innerHTML=`
@@ -44,9 +53,20 @@ const showFetch = data => {
     })
 }
 
+const fetchForSeeMore = () => {
+    const url = `https://openapi.programming-hero.com/api/ai/tools`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => seeMore(data.data.tools));
 
-// function seeMore(){
+}
 
-// }
+
+function seeMore(newdata){
+    showFetch(newdata);
+    document.getElementById('see-more').classList.add('d-none');
+    
+}
 
 loadFetch();
+// fetchForSeeMore();
