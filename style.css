@@ -1,0 +1,10 @@
+.accuracy{
+    background-color: rgb(241, 88, 88);
+    color: white;
+    border-radius: 5px;
+    padding: 0 5px;
+    position: absolute;
+    left: 230px;
+    top: 30px;
+    
+}

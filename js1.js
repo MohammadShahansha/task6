@@ -130,11 +130,12 @@ const showDetails = data =>{
 
     <div class="col">
         <div class="card p-4">
-        <img src="${data.image_link[0]}" class="card-img-top" alt="...">
-        <div class="card-body px-4">
-            <h4 class="card-title text-center">${data.input_output_examples[0].input}</h4>
-            <p class="card-text text-center">${data.input_output_examples[0].output}</p>
-        </div>
+             <p class = "accuracy fs-6">Accuracy ${data.accuracy.score*100}%</p>
+            <img src="${data.image_link[0]}" class="card-img-top" alt="...">
+            <div class="card-body px-4">
+                <h4 class="card-title text-center">${data.input_output_examples[0].input}</h4>
+                <p class="card-text text-center">${data.input_output_examples[0].output}</p>
+            </div>
         </div>
     </div>
 
@@ -145,6 +146,3 @@ const showDetails = data =>{
 }
 
 loadFetch();
-// loadShowDetails();
-
-// fetchForSeeMore();
