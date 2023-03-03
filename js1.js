@@ -74,39 +74,62 @@ const showDetails = data =>{
     const modalCard = document.getElementById('modalCard');
     modalCard.innerHTML = '';
     modalCard.innerHTML += `
-    <div>
+    <div class ="">
         <div class="col">
             <div style="background: rgba(235, 87, 87, 0.05);" class="card">
-                <h4 class = "px-4 my-4">${data.description}</h4>
-            <div class="card-body">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                <div class="card text-success py-2 px-1">
-                    <h5 class ="text-center fs-6 m-0"> ${data.pricing[0].price}</h5>
-                    <h5 class ="text-center fs-6 m-0 "> ${data.pricing[0].plan}</h5> 
+                <h5 class = "my-2 px-2">${data.description}</h5>
+             <div class="card-body">
+                 <div class="row row-cols-1 row-cols-md-3 g-4">
+                        <div class="col">
+                            <div class="card text-success py-2 px-1">
+                                <h5 class ="text-center fs-6 m-0"> ${data.pricing[0].price}</h5>
+                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing[0].plan}</h5> 
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card text-warning py-2 px-1">
+                                <h5 class ="text-center fs-6 m-0"> ${data.pricing[1].price}</h5>
+                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing[1].plan}</h5>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card text-danger-emphasis py-2 px-1">
+                                <h5 class ="text-center fs-6 m-0"> ${data.pricing[2].price.slice(0,10)}</h5>
+                                <h5 class ="text-center fs-6 m-0 "> ${data.pricing[2].plan}</h5>
+                            </div>
+                        </div>
+                        
+                 </div>
+                 <div class="">
+                    <div class=" ">
+                        <div class ="d-flex justify-content-between mt-2">
+                            <div class ="">
+                                <h5 class="gap-0 m-0 p-0">Feature</h5>
+                                <ul class="p-2">
+                                    <li class="fs-6">${data.features[1].feature_name}</li>
+                                    <li class="fs-6">${data.features[2].feature_name}</li>
+                                    <li class="fs-6 ">${data.features[3].feature_name}</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 class="gap-0 m-0 p-0">Integration</h5>
+                                <ul class="p-3">
+                                    <li class="fs-6">${data.integrations[0]}</li>
+                                    <li class="fs-6">${data.integrations[1]}</li>
+                                    <li class="fs-6">${data.integrations[2]}</li>
+                                </ul>
+                            </div>
+                        </div>    
+                    </div>
                 </div>
-                </div>
-                <div class="col">
-                <div class="card text-warning py-2 px-1">
-                    <h5 class ="text-center fs-6 m-0"> ${data.pricing[1].price}</h5>
-                    <h5 class ="text-center fs-6 m-0 "> ${data.pricing[1].plan}</h5>
-                </div>
-                </div>
-                <div class="col">
-                <div class="card text-danger-emphasis py-2 px-1">
-                    <h5 class ="text-center fs-6 m-0"> ${data.pricing[2].price.slice(0,10)}</h5>
-                    <h5 class ="text-center fs-6 m-0 "> ${data.pricing[2].plan}</h5>
-                </div>
-                </div>
-            </div>
-            </div>
-            </div>
+             </div>
+          </div>
         </div>
     </div>
 
 
     <div class="col">
-        <div class="card">
+        <div class="card p-4">
         <img src="${data.image_link[0]}" class="card-img-top" alt="...">
         <div class="card-body px-4">
             <h4 class="card-title text-center">${data.input_output_examples[0].input}</h4>
