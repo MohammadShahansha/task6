@@ -8,13 +8,6 @@ const loadFetch = () => {
 
 const showFetch = (data) => {
     console.log(data);
-    // if(dataLimit===6){
-    //     document.getElementById('see-more').classList.remove('d-none');
-    //     data.slice(0,6);
-    // }
-    // else{
-    //     document.getElementById('see-more').classList.add('d-none');
-    // }
 
     const parantDiv = document.getElementById('parantDiv');
     parantDiv.innerHTML='';
@@ -42,7 +35,7 @@ const showFetch = (data) => {
                         </div>
                     </div>
                      <div>
-                         <i class="fa-solid fa-arrow-right"></i>
+                     <button onclick="loadDetails('${singleItem.id}')" type="button" class = "btn btn-secondary" data-bs-toggle="modal" data-bs-target="#showDetailsModal"> <i class="fa-solid fa-arrow-right"></i></button>
                      </div>
                  </div>
              </div>
@@ -61,12 +54,29 @@ const fetchForSeeMore = () => {
 
 }
 
-
 function seeMore(newdata){
     showFetch(newdata);
     document.getElementById('see-more').classList.add('d-none');
     
 }
 
+
+function loadDetails(id){
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => showDetails(data.data))
+    
+}
+
+const showDetails = data =>{
+    console.log(data);
+    const parentModalDiv = document.getElementById('showDetailsModal');
+    const childModalDiv = document.getElementById('childModalDiv');
+    
+}
+
 loadFetch();
+// loadShowDetails();
+
 // fetchForSeeMore();
