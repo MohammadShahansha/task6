@@ -71,8 +71,29 @@ function loadDetails(id){
 
 const showDetails = data =>{
     console.log(data);
-    const parentModalDiv = document.getElementById('showDetailsModal');
-    const childModalDiv = document.getElementById('childModalDiv');
+    const modalCard = document.getElementById('modalCard');
+    modalCard.innerHTML = '';
+    modalCard.innerHTML += `
+    <div class="col">
+        <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+            additional content. This content is a little bit longer.</p>
+        </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+        <img src="${data.image_link[0]}" class="card-img-top" alt="...">
+        <div class="card-body px-4">
+            <h4 class="card-title text-center">${data.input_output_examples[0].input}</h4>
+            <p class="card-text text-center">${data.input_output_examples[0].output}</p>
+        </div>
+        </div>
+    </div>
+    `
     
 }
 
