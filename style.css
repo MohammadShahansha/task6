@@ -8,3 +8,15 @@
     top: 30px;
     
 }
+
+
+
+@media screen and (max-width: 575px){
+
+    .accuracy{
+        position: absolute;
+        left: 170px;
+        /* bottom:270px; */
+        top: 32px;
+    }
+}

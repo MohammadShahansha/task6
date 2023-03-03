@@ -42,11 +42,13 @@ const showFetch = (data) => {
         </div>
         `;
         parantDiv.appendChild(childDiv);
+        document.getElementById('spinner').classList.add('d-none');
 
     })
 }
 
 const fetchForSeeMore = () => {
+    document.getElementById('spinner').classList.remove('d-none');
     const url = `https://openapi.programming-hero.com/api/ai/tools`;
     fetch(url)
     .then(res => res.json())
@@ -139,10 +141,14 @@ const showDetails = data =>{
         </div>
     </div>
 
-
-
     `;
+    document.getElementById('spinner').classList.add('d-none');
     
+}
+
+
+function showSpinner(){
+    document.getElementById('spinner').classList.remove('d-none');
 }
 
 loadFetch();
