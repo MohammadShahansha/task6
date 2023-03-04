@@ -72,14 +72,16 @@ function loadDetails(id){
 }
 
 const showDetails = data =>{
-    console.log(data);
-    console.log(data.pricing);
-    // condition for accuracy
-    const accuracy = document.getElementById('accuracyShow');
-    if(data.accuracy.score === 'null'){
-        accuracy.classList.add('d-none');
+
+    const accuracy = data.accuracy.score*100;
+    const accuracyFeild = document.getElementById('accuracy');
+    if(accuracy===0){
+        accuracyFeild.classList.add('d-none');
     }
-    
+    else{
+        accuracyFeild.classList.remove('d-none');
+        accuracyFeild.innerText =accuracy + '% Accuracy';
+    }
     
     const modalCard = document.getElementById('modalCard');
     modalCard.innerHTML = '';
@@ -108,7 +110,7 @@ const showDetails = data =>{
                                 <h5 class ="text-center fs-6 m-0 "> ${data.pricing?data.pricing[2].plan:'nothing'}</h5>
                             </div>
                         </div>    
-                 </div>
+                  </div>
                  <div class="">
                     <div class=" ">
                         <div class ="d-flex justify-content-between mt-2">
@@ -123,9 +125,9 @@ const showDetails = data =>{
                             <div>
                                 <h5 class="gap-0 m-0 p-0">Integration</h5>
                                 <ul class="p-3">
-                                    <li class="fs-6">${data.integrations?data.integrations[0]:'no inti'}</li>
-                                    <li class="fs-6">${data.integrations?data.integrations[1]:'no inti'}</li>
-                                    <li class="fs-6">${data.integrations?data.integrations[2]:'no inti'}</li>
+                                    <li class="fs-6">${data.integrations?data.integrations[0]:'not found'}</li>
+                                    <li class="fs-6">${data.integrations?data.integrations[1]:'not found'}</li>
+                                    <li class="fs-6">${data.integrations?data.integrations[2]:'not found'}</li>
                                 </ul>
                             </div>
                         </div>    
@@ -136,14 +138,13 @@ const showDetails = data =>{
         </div>
     </div>
 
-
     <div class="col">
         <div class="card p-4">
-             <p id="accuracyShow" class = "accuracy fs-6">${data.accuracy.score*100}% Accuracy</p>
+             
             <img src="${data.image_link[0]}" class="card-img-top" alt="...">
             <div class="card-body px-4">
-                <h4 class="card-title text-center">${data.input_output_examples?data.input_output_examples[0].input:'no input'}</h4>
-                <p class="card-text text-center">${data.input_output_examples?data.input_output_examples[0].output:'no output'}</p>
+                <h4 class="card-title text-center">${data.input_output_examples?data.input_output_examples[0].input:'Can you give me any example?'}</h4>
+                <p class="card-text text-center">${data.input_output_examples?data.input_output_examples[0].output:'No! Not Yet! Talke a break!!!'}</p>
             </div>
         </div>
     </div>
@@ -157,6 +158,5 @@ const showDetails = data =>{
 function showSpinner(){
     document.getElementById('spinner').classList.remove('d-none');
 }
-
 
 loadFetch();
